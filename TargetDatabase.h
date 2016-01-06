@@ -3,6 +3,8 @@
 //
 #include <string>
 #include <vector>
+#include <fstream>
+
 #ifndef PO_TARGETDATABASE_H
 #define PO_TARGETDATABASE_H
 
@@ -15,7 +17,10 @@ public:
     void printAirTravels();
     void printMixedTravels();
 private:
-    const string db_path = "travels.db";
+    const string DB_PATH = "travels.db";
+    const string SEA_KEY = "SEA";
+    const string AIR_KEY = "AIR";
+    const string MIX_KEY = "MIX";
     vector<string> seaTravels;
     vector<string> airTravels;
     vector<string> mixed;
