@@ -1,5 +1,18 @@
-//
-// Created by ado on 06.01.16.
-//
 
+#include <iostream>
+#include <fstream>
 #include "SeaTicket.h"
+
+SeaTicket::SeaTicket(string str) : ticket(str) {
+
+}
+
+void SeaTicket::showTicket() {
+    cout << "Rejestracja podrozy morskiej do " << destination << endl
+    << "Zarejestrowane na " << name << ". Wylot: " << day << "." << month << "." << year << endl;
+
+}
+void SeaTicket::operator>>(ofstream* out) {
+    *out<<"S ";
+    ticket::operator>>(out);
+}

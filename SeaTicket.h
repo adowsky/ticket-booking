@@ -1,6 +1,3 @@
-//
-// Created by ado on 06.01.16.
-//
 
 #ifndef PO_SEATICKET_H
 #define PO_SEATICKET_H
@@ -8,11 +5,11 @@
 
 #include "ticket.h"
 
-class SeaTicket : ticket{
-    int dock;
+class SeaTicket : public ticket{
 public:
-    SeaTicket(int);
+    SeaTicket(string);
     void showTicket();
+    void operator>>(ofstream*);
 };
 
 

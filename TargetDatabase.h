@@ -1,6 +1,3 @@
-//
-// Created by ado on 06.01.16.
-//
 #include <string>
 #include <vector>
 #include <fstream>
@@ -16,6 +13,12 @@ public:
     void printSeaTravels();
     void printAirTravels();
     void printMixedTravels();
+    string getSeaTravel(int);
+    string getAirTravel(int);
+    string getMixedTravel(int);
+    int seaLength();
+    int airLength();
+    int mixedLength();
 private:
     const string DB_PATH = "travels.db";
     const string SEA_KEY = "SEA";

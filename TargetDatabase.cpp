@@ -1,9 +1,10 @@
 //
-// Created by ado on 06.01.16.
+// Database for travels.
 //
 
 #include <iostream>
 #include "TargetDatabase.h"
+
 
 TargetDatabase::TargetDatabase() {
     ifstream in;
@@ -12,13 +13,13 @@ TargetDatabase::TargetDatabase() {
         vector<string>* current;
         string buffer;
         while(!in.eof()){
-            in>>buffer;
+            getline(in, buffer);
             if(buffer.compare(SEA_KEY) == 0){
                 current = &seaTravels;
             }else if(buffer.compare(AIR_KEY) == 0){
-
+                current = &airTravels;
             }else if(buffer.compare(MIX_KEY) == 0){
-
+                current = &mixed;
             }else{
                 current->push_back(buffer);
             }
@@ -30,32 +31,46 @@ TargetDatabase::TargetDatabase() {
 }
 
 void TargetDatabase::printSeaTravels() {
-    cout<<"POLACZENIA MORSKIE"<<endl;
+    cout<<"POLACZENIA MORSKIE \t"<<"Ilosc: "<<seaTravels.size()<<endl;
     for(int i=0; i<seaTravels.size();++i){
-        cout<<i<<" "<<seaTravels[i]<<endl;
+        cout<<"M"<<i<<" "<<seaTravels[i]<<endl;
     }
 }
 
 void TargetDatabase::printAirTravels() {
-    cout<<"POLACZENIA POWIETRZNE"<<endl;
+    cout<<"POLACZENIA POWIETRZNE\t"<< "Ilosc: "<<airTravels.size()<<endl;
     for(int i=0; i<airTravels.size();++i){
-        cout<<i<<" "<<airTravels[i]<<endl;
+        cout<<"L"<<i<<" "<<airTravels[i]<<endl;
     }
 }
 
 void TargetDatabase::printMixedTravels() {
-    cout<<"POLACZENIA MIESZANE"<<endl;
+    cout<<"POLACZENIA MIESZANE\t"<<"Ilosc: "<<mixed.size()<<endl;
     for(int i=0; i<mixed.size();++i){
-        cout<<i<<" "<<mixed[i]<<endl;
+        cout<<"R"<<i<<" "<<mixed[i]<<endl;
     }
 }
 
-//Class test
-/**
-int main(){
-    TargetDatabase* db = new TargetDatabase();
-    db->printSeaTravels();
-    db->printAirTravels();
-    db->printMixedTravels();
-    return 0;
-}*/
+string TargetDatabase::getSeaTravel(int i) {
+    return seaTravels[i];
+}
+
+string TargetDatabase::getAirTravel(int i) {
+    return airTravels[i];
+}
+
+string TargetDatabase::getMixedTravel(int i) {
+    return mixed[i];
+}
+
+int TargetDatabase::seaLength() {
+    return seaTravels.size();
+}
+
+int TargetDatabase::airLength() {
+    return airTravels.size();
+}
+
+int TargetDatabase::mixedLength() {
+    return mixed.size();
+}

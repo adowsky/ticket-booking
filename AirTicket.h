@@ -1,18 +1,14 @@
-//
-// Created by ado on 06.01.16.
-//
-
 #ifndef PO_AIRTICKET_H
 #define PO_AIRTICKET_H
 
 
 #include "ticket.h"
 
-class AirTicket : ticket{
-    int gate;
+class AirTicket : public ticket{
 public:
-    AirTicket(int);
+    AirTicket(std::string);
     void showTicket();
+    void operator>>(ofstream*);
 
 };
 

@@ -1,25 +1,29 @@
-//
-// Created by ado on 06.01.16.
-//
+#include <iostream>
+#include <vector>
 #include <string>
+#include <sstream>
 #ifndef PO_TICKET_H
 #define PO_TICKET_H
 
 using namespace std;
 
+
 class ticket {
+protected:
     string name;
-    string adres;
+    string address;
+    string destination;
     int day;
     int month;
     int year;
 
 public:
-    ticket();
+    ticket(std::string);
     virtual void showTicket() =0;
     void setDate(int,int,int);
     void setOwner(string,string);
-
+    ticket* operator<<(string);
+    virtual void operator>> (ofstream*);
 };
 
 
