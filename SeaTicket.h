@@ -7,7 +7,7 @@
 
 class SeaTicket : public ticket{
 public:
-    SeaTicket(std::string);
+    SeaTicket(std::string);//std for IDE nervous state
     void showTicket();
     void operator>>(ofstream*);
 };

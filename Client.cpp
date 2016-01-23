@@ -43,7 +43,7 @@ void Client::commands(bool * run) {
     cout<<"Podaj komende: ";
     string cmd;
     cin>>cmd;
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     if(cmd.compare("travels") == 0){
         tdb->printSeaTravels();
         tdb->printAirTravels();
@@ -57,14 +57,14 @@ void Client::commands(bool * run) {
         int n;
         cin>>c;
         cin>>n;
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         ticket* t;
         if(c=='L' && tdb->airLength() > n && n>=0){
             t = new AirTicket(tdb->getAirTravel(n));
         }else if(c=='M' && tdb->seaLength() > n && n>=0){
             t = new SeaTicket(tdb->getSeaTravel(n));
         }else if(c=='R' && tdb->mixedLength() > n && n>=0){
-            t = new MixedTicket((std::string)tdb->getMixedTravel(n));
+            t = new MixedTicket((std::string)tdb->getMixedTravel(n));//std for IDE nervous state
         }else{
             cout<<"Blad! Sprobuj ponownie! Identyfikatory podrozy dostepne po uzyciu funkcji travels"<<endl;
             return;
@@ -72,16 +72,16 @@ void Client::commands(bool * run) {
         cout<<"Podaj imie: ";
         string name;
         cin>>name;
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout<<"Podaj nazwisko: ";
         string tmp;
         cin>>tmp;
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         name.append(" ");
         name.append(tmp);
         cout<<"Miasto zamieszkania: ";
         cin>>tmp;
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         t->setOwner(name, tmp);
         cout<<"Data wylotu (dd mm yyyy): ";
         int d,m,y;
@@ -100,7 +100,7 @@ void Client::commands(bool * run) {
         cout<<"Podaj idetyfikator rejstracji: ";
         int n;
         cin>>n;
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         removeTicket(n);
     }else if(cmd.compare("help") == 0){
         help();

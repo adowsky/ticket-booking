@@ -2,7 +2,7 @@
 #include <fstream>
 #include "MixedTicket.h"
 
-MixedTicket::MixedTicket(std::string str) : ticket(str) {
+MixedTicket::MixedTicket(std::string str) : ticket(str) {//std for IDE nervous state
 
 }
 

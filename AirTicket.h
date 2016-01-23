@@ -6,7 +6,7 @@
 
 class AirTicket : public ticket{
 public:
-    AirTicket(std::string);
+    AirTicket(std::string);//std for IDE nervous state
     void showTicket();
     void operator>>(ofstream*);
 

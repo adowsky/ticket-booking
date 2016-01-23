@@ -4,7 +4,7 @@
 #include "SeaTicket.h"
 #include "MixedTicket.h"
 
-ticket::ticket(std::string dest) {
+ticket::ticket(std::string dest) {//std for IDE nervous state
     this->destination = dest;
 }
 

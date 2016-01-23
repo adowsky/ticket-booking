@@ -18,7 +18,7 @@ protected:
     int year;
 
 public:
-    ticket(std::string);
+    ticket(std::string);//std for IDE nervous state
     virtual void showTicket() =0;
     void setDate(int,int,int);
     void setOwner(string,string);

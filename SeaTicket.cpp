@@ -3,7 +3,7 @@
 #include <fstream>
 #include "SeaTicket.h"
 
-SeaTicket::SeaTicket(std::string str) : ticket(str) { }
+SeaTicket::SeaTicket(std::string str) : ticket(str) { }//std for IDE nervous state
 
 void SeaTicket::showTicket() {
     cout << "Rejestracja podrozy morskiej do " << destination << endl

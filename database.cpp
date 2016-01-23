@@ -7,9 +7,9 @@ using namespace std;
 template <class T>
 class database{
     vector<T*> db;
-    std::string path;
+    string path;
 public:
-    database(std::string);
+    database(std::string);//std for IDE nervous state
     void addRegistry(T*);
     T* getRegistry(int);
     void removeRegistry(int);
@@ -25,7 +25,7 @@ public:
 
 };
 template <class T>
-database<T>::database (std::string path) //std for IDE nervous state
+database<T>::database (string path)
 {
     this->path = path;
     ifstream in;

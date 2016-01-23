@@ -7,7 +7,7 @@
 class MixedTicket : public ticket{
 
 public:
-    MixedTicket(std::string);
+    MixedTicket(std::string);//std for IDE nervous state
     void showTicket();
     void operator>>(ofstream*);
 
