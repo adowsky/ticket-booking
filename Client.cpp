@@ -11,13 +11,17 @@ Client::Client() {
 }
 
 void Client::addTicket(ticket* t) {
-    db->addRegistry(t);
+    *db += t;
     cout<<"Rezerwacja dodana pomyslnie!"<<endl;
 }
 
 void Client::removeTicket(int i) {
-    db->removeRegistry(i);
-    cout<<"Rezerwacja usunieta!"<<endl;
+    if (i > 0 && i < db->length()) {
+        *db -= i;
+        cout << "Rezerwacja usunieta!" << endl;
+    }else{
+        cout<< "Nie znaleziono rezerwacji o podanym numerze!" <<endl;
+    }
 }
 
 void Client::showAllReservations() {
@@ -39,7 +43,7 @@ void Client::commands(bool * run) {
     cout<<"Podaj komende: ";
     string cmd;
     cin>>cmd;
-    cin.sync();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     if(cmd.compare("travels") == 0){
         tdb->printSeaTravels();
         tdb->printAirTravels();
@@ -53,6 +57,7 @@ void Client::commands(bool * run) {
         int n;
         cin>>c;
         cin>>n;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         ticket* t;
         if(c=='L' && tdb->airLength() > n && n>=0){
             t = new AirTicket(tdb->getAirTravel(n));

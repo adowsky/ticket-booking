@@ -1,6 +1,3 @@
-//
-// Created by ado on 06.01.16.
-//
 #include <vector>
 #include <string>
 #include <fstream>
@@ -64,7 +61,30 @@ T *database<T>::getRegistry(int i) {
 template<class T>
 void database<T>::removeRegistry(int i) {
     if(i<db.size() && i>=0)
+    {
+        fstream out;
+        fstream tmp;
+        out.open(path, ios::in);
+        tmp.open("tmp", ios::out);
+        string s;
+        for (int j = 0; j < i; ++j) {
+            getline(out, s);
+            tmp << s << endl;
+        }
+        getline(out, s);
+        for (int j = i+1; j < db.size();++j){
+            getline(out, s);
+            tmp << s << endl;
+        }
+        out.close();
+        tmp.close();
+        out.open(path, ios::out);
+        tmp.open("tmp", ios::in);
+        out << tmp.rdbuf();
+        out.close();
+        tmp.close();
         db.erase(db.begin() + i);
+    }
 }
 template<class T>
 int database<T>::length() {

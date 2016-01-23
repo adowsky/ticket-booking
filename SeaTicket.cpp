@@ -3,9 +3,7 @@
 #include <fstream>
 #include "SeaTicket.h"
 
-SeaTicket::SeaTicket(string str) : ticket(str) {
-
-}
+SeaTicket::SeaTicket(std::string str) : ticket(str) { }
 
 void SeaTicket::showTicket() {
     cout << "Rejestracja podrozy morskiej do " << destination << endl

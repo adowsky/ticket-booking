@@ -7,7 +7,7 @@
 
 class SeaTicket : public ticket{
 public:
-    SeaTicket(string);
+    SeaTicket(std::string);
     void showTicket();
     void operator>>(ofstream*);
 };
