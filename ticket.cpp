@@ -21,17 +21,7 @@ void ticket::setOwner(string name, string address) {
     this->name = name;
     this->address = address;
 }
-void ticket::setId(long i){
-    this->id=i;
-    if(nextId <= id)
-        nextId = id+1;
-}
-long ticket::getId(){
-    return id;
-}
-void ticket::setNextId(long next) {
-    this->nextId = next;
-}
+
 ticket *ticket::operator<<(string s) {
         ticket* result;
         stringstream ss;

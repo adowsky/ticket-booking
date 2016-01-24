@@ -24,9 +24,6 @@ public:
     virtual void showTicket() =0;
     void setDate(int,int,int);
     void setOwner(string,string);
-    void setId(long);
-    long getId();
-    void setNextId(long);
     ticket* operator<<(string);
     virtual void operator>> (ofstream*);
     bool operator==(long);
