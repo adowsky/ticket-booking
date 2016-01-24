@@ -12,15 +12,14 @@ public:
     database(std::string);//std for IDE nervous state
     void addRegistry(T*);
     T* getRegistry(int);
-    void removeRegistry(int);
+    bool removeRegistry(int);
     int length();
     database* operator+=(T* t){
         this->addRegistry(t);
         return this;
     }
-    database* operator-=(int i){
-        this->removeRegistry(i);
-        return this;
+    bool operator-=(int i){
+        return this->removeRegistry(i);
     }
 
 };
@@ -59,20 +58,29 @@ T *database<T>::getRegistry(int i) {
     return db[i];
 }
 template<class T>
-void database<T>::removeRegistry(int i) {
-    if(i<db.size() && i>=0)
-    {
+bool database<T>::removeRegistry(int i) {
+    if(i>=0)
+    {   int index= -1;
+        for(int j=0;j<db.size();j++){
+            if(*db[j] == i){
+                index = j;
+                break;
+            }
+        }
+        if(index < 0 ){
+            return false;
+        }
         fstream out;
         fstream tmp;
         out.open(path, ios::in);
         tmp.open("tmp", ios::out);
         string s;
-        for (int j = 0; j < i; ++j) {
+        for (int j = 0; j < index; ++j) {
             getline(out, s);
             tmp << s << endl;
         }
         getline(out, s);
-        for (int j = i+1; j < db.size();++j){
+        for (int j = index+1; j < db.size();++j){
             getline(out, s);
             tmp << s << endl;
         }
@@ -83,7 +91,7 @@ void database<T>::removeRegistry(int i) {
         out << tmp.rdbuf();
         out.close();
         tmp.close();
-        db.erase(db.begin() + i);
+        db.erase(db.begin() + index);
     }
 }
 template<class T>

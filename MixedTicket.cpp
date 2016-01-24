@@ -8,7 +8,7 @@ MixedTicket::MixedTicket(std::string str) : ticket(str) {//std for IDE nervous s
 
 void MixedTicket::showTicket() {
     cout<<"(L): podroz lotnicza, (M): podroz morska"<<endl;
-    cout<<"Rejestracja podrozy mieszanej do "<<destination<<endl
+    cout<<"#"<<id<<": Rejestracja podrozy mieszanej do "<<destination<<endl
     <<"Zarejestrowane na "<<name<<". Wylot: "<<day<<"."<<month<<"."<<year<<endl;
 
 }

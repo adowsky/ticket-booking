@@ -4,8 +4,11 @@
 #include "SeaTicket.h"
 #include "MixedTicket.h"
 
+long ticket::nextId = 0;
+
 ticket::ticket(std::string dest) {//std for IDE nervous state
     this->destination = dest;
+    id = nextId++;
 }
 
 void ticket::setDate(int d, int m, int y) {
@@ -18,13 +21,25 @@ void ticket::setOwner(string name, string address) {
     this->name = name;
     this->address = address;
 }
-
+void ticket::setId(long i){
+    this->id=i;
+    if(nextId <= id)
+        nextId = id+1;
+}
+long ticket::getId(){
+    return id;
+}
+void ticket::setNextId(long next) {
+    this->nextId = next;
+}
 ticket *ticket::operator<<(string s) {
         ticket* result;
         stringstream ss;
         ss<<s;
         char type;
         ss>>type;
+    long id;
+    ss >> id;
         int len = 0;
         ss>>len;
         char* tmp = new char[len + 1];
@@ -40,6 +55,10 @@ ticket *ticket::operator<<(string s) {
             result = new MixedTicket(dst);
         }else
             return nullptr;
+        result->id = id;
+        if(id >= nextId){
+            nextId = id+1;
+        }
         ss>>len;
         delete[](tmp);
         tmp = new char[len + 1];
@@ -61,9 +80,13 @@ ticket *ticket::operator<<(string s) {
 
 void ticket::operator>>(ofstream* out) {
     stringstream ss;
-    ss<<destination.length()<<" "<<destination <<" "
+    ss<<id<<" "<<destination.length()<<" "<<destination <<" "
     <<name.length()<<" "<<name<<" "
     <<address.length()<<" "<<address<<" "
     <<day<<" "<<month<<" "<<year<<endl;
     *out<<ss.rdbuf();
+}
+
+bool ticket::operator==(long i) {
+    return (i == id);
 }

@@ -16,8 +16,7 @@ void Client::addTicket(ticket* t) {
 }
 
 void Client::removeTicket(int i) {
-    if (i > 0 && i < db->length()) {
-        *db -= i;
+    if (*db -= i) {
         cout << "Rezerwacja usunieta!" << endl;
     }else{
         cout<< "Nie znaleziono rezerwacji o podanym numerze!" <<endl;
@@ -30,7 +29,6 @@ void Client::showAllReservations() {
         return;
     }
     for(int i=0;i<db->length();++i){
-        cout<<"#"<<i<<": ";
         db->getRegistry(i)->showTicket();
     }
 }
